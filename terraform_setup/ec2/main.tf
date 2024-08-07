@@ -6,7 +6,7 @@ provider "aws" {
 data "terraform_remote_state" "vpc" {
   backend = "s3"
   config = {
-    bucket = "<bucket-name>" # Hier Bucketnamen der VPC-tfstate eintragen
+    bucket = "techstarter-marcel-iac"  # Hier Bucketnamen der VPC-tfstate eintragen
     key    = "ansible-exercise/vpc.tfstate"
     region = "eu-central-1"
   }
@@ -55,7 +55,7 @@ resource "aws_instance" "web" {
   instance_type          = "t2.micro"
   subnet_id              = data.terraform_remote_state.vpc.outputs.public_subnet_id_1a # Nutzt ein öffentliches Subnetz
   vpc_security_group_ids = [aws_security_group.http.id]                                # Nutzt VPC-Security-Gruppen
-  key_name               = var.key_name                                                # Hier AWS SSH-Key-Namen  eintragen                                            # Key-Namen eintragen
+  key_name               = var.key_name                                             # Hier AWS SSH-Key-Namen  eintragen                                            # Key-Namen eintragen
 
   tags = {
     Name = "Ansible-Exercise"
