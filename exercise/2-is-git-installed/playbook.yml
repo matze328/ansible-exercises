@@ -1,0 +1,8 @@
+- name: Exercise 2
+  hosts: web
+  become: yes  
+  tasks:
+    - name: Ensure Git is installed
+      package:
+        name: git
+        state: present
