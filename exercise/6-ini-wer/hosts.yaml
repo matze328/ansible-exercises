@@ -1,0 +1,25 @@
+all:
+  children:
+    alle_hosts:
+      children:
+        gruppe1:
+          hosts:
+            web-instance-0:
+              ansible_host: 3.64.149.170
+              ansible_ssh_common_args: -o StrictHostKeyChecking=no
+              ansible_ssh_private_key_file: /home/maze328/.ssh/popel123.pem
+              ansible_user: ubuntu
+        gruppe2:
+          hosts:
+            web-instance-1:
+              ansible_host: 54.93.208.39
+              ansible_ssh_common_args: -o StrictHostKeyChecking=no
+              ansible_ssh_private_key_file: /home/maze328/.ssh/popel123.pem
+              ansible_user: ubuntu
+        gruppe3:
+          hosts:
+            web-instance-2:
+              ansible_host: 3.123.128.227
+              ansible_ssh_common_args: -o StrictHostKeyChecking=no
+              ansible_ssh_private_key_file: /home/maze328/.ssh/popel123.pem
+              ansible_user: ubuntu

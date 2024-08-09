@@ -1,0 +1,32 @@
+---
+- name: Grüße von  Gruppe 1 senden
+  hosts: gruppe1
+  tasks:
+    - name: Begrüßung von Gruppe 1 ausgeben
+      debug:
+        msg: "Hallo von: Gruppe 1"
+
+- name: Grüße von  Gruppe 1 senden
+  hosts: gruppe2
+  tasks:
+    - name: Begrüßung von Gruppe 2 ausgeben
+      debug:
+        msg: "Hallo von: Gruppe 2"
+
+- name: Grüße von Gruppe 1 senden
+  hosts: gruppe3
+  tasks:
+    - name: Begrüßung von Gruppe 3 ausgeben
+      debug:
+        msg: "Hallo von: Gruppe 3"
+
+- name: IP-Adressen für alle Hosts in der Super-Gruppe abrufen
+  hosts: alle_hosts
+  tasks:
+    - name: Eigene IP-Adresse anzeigen
+      shell: hostname -I | awk '{print $1}'
+      register: ip_output
+
+    - name: Die IP-Adresse des Hosts anzeigen
+      debug:
+        msg: "Die eigene IP-Adresse ist: {{ ip_output.stdout }}"
